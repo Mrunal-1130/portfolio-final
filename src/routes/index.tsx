@@ -5,7 +5,8 @@ import {
   ArrowUpRight, ArrowRight, Shield, Network, Cpu,
   Award, BookOpen, Briefcase, Mail, Github, Linkedin,
   Twitter, User, Trophy, Sun, Moon, X, ExternalLink, Lock,
-  Flag, GraduationCap, Rocket, Target,
+  Flag, GraduationCap, Rocket, Target,Eye,
+Download,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")(({
@@ -39,7 +40,10 @@ const projects = [
     blurb: "ML-powered phishing URL & email detector with real-time analysis dashboard. Trained on 50K+ samples achieving 97.3% accuracy.",
     link: "https://cybershieldai.vercel.app/",
     live: true,
+    img: "/projects/cybershield.png",
   },
+
+  
   // ── Add more projects below ──
   // {
   //   n: "02",
@@ -283,6 +287,15 @@ function Index() {
             }
           </button>
           */}
+        <a
+  href="/resume/Mrunal_Thale_Resume.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground"
+>
+  <Eye className="size-4 transition-colors group-hover:text-accent" />
+  Resume
+</a>
         </div>
       </header>
 
@@ -314,18 +327,14 @@ function Index() {
               </span>
 
               <h1
-                className="font-display font-bold leading-[0.95] tracking-tight"
-                style={{
-                  fontSize:"clamp(2.8rem,9vw,7.5rem)",
-                  background: theme === "light"
-                    ? "linear-gradient(160deg,#1a1830 20%,var(--color-accent) 100%)"
-                    : "linear-gradient(160deg,#f0eff8 30%,#8e8caa 100%)",
-                  WebkitBackgroundClip:"text", backgroundClip:"text", WebkitTextFillColor:"transparent",
-                  animation:"fadeUp .9s cubic-bezier(.16,1,.3,1) both .12s",
-                }}
-              >
-                Mrunal Thale
-              </h1>
+  className="font-display font-bold leading-[0.95] tracking-tight bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent"
+  style={{
+    fontSize: "clamp(2.8rem,9vw,7.5rem)",
+    animation: "fadeUp .9s cubic-bezier(.16,1,.3,1) both .12s",
+  }}
+>
+  Mrunal Thale
+</h1>
 
               <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground" style={{animation:"fadeUp .9s cubic-bezier(.16,1,.3,1) both .2s"}}>
                 Passionate about <span className="font-semibold text-foreground">cybersecurity</span>,{" "}
@@ -342,6 +351,15 @@ function Index() {
                 <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-accent/5 px-7 py-4 text-sm font-bold backdrop-blur-md transition-all hover:border-accent/40 hover:bg-accent/10 hover:-translate-y-1">
                   Let&apos;s Talk
                 </a>
+ <a
+  href="/resume/Mrunal_Thale_Resume.pdf"
+  download="Mrunal_Thale_Resume.pdf"
+  className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-7 py-4 text-sm font-bold text-accent transition-all hover:bg-accent/20 hover:-translate-y-1"
+>
+  <Download className="size-4" />
+  Download Resume
+</a>
+
               </div>
             </div>
           </div>
@@ -400,6 +418,7 @@ function Index() {
         <section id="projects" className="relative border-y border-border/60 bg-surface/40 px-6 py-28 md:px-10">
           <div className="mx-auto max-w-7xl">
             <div className="mb-14">
+              
               <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.35em] text-accent">— Projects</div>
               <h2 className="font-display text-4xl font-bold tracking-tight md:text-6xl">Hands-on security work</h2>
               <p className="mt-4 max-w-xl text-muted-foreground text-base">Real-world cybersecurity projects built with purpose.</p>
@@ -409,6 +428,8 @@ function Index() {
                 <article key={p.title} className="group relative overflow-hidden cursor-pointer rounded-2xl border border-border/80 bg-background/60 p-8 transition-all hover:border-accent/40 hover:-translate-y-1 hover:shadow-[0_24px_60px_-20px_rgba(124,110,247,.3)]">
                   <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-accent/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"/>
                   <div className="mb-5 flex items-center justify-between">
+
+
                     <span className="font-display text-xs font-bold text-accent">{p.n}</span>
                     {p.link && p.link !== "#"
                       ? <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent" onClick={e=>e.stopPropagation()}>
@@ -417,6 +438,15 @@ function Index() {
                       : <ArrowUpRight className="size-5 text-muted-foreground transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent"/>
                     }
                   </div>
+
+                  {/* Project Preview Image */}
+<div className="mb-5 overflow-hidden rounded-xl border border-border/60">
+  <img
+    src={p.img}
+    alt={p.title}
+    className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+  />
+</div>
                   {/* Live badge + link */}
                   <div className="mb-3 flex flex-wrap items-center gap-2">
                     {p.live && (
@@ -637,7 +667,7 @@ function Index() {
               <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.35em] text-accent">— Get in touch</div>
               <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">Let&apos;s build something secure.</h2>
               <p className="mx-auto mt-4 max-w-xl text-muted-foreground text-base leading-relaxed">
-                Have an opportunity, collaboration or a security question? Drop me a message — powered by EmailJS (100% free, no backend).
+                Have an opportunity, collaboration or a security question? Drop me a message.
               </p>
               <form ref={formRef} onSubmit={onSubmit} className="mt-10 space-y-3 text-left">
                 <div className="grid gap-3 md:grid-cols-2">
